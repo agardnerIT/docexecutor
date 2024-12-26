@@ -47,7 +47,7 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        filename: "index.md",
+                        filename: "docs/index.md",
                         snippet_id: snippetID,
                         secret_key: localStorage.getItem("secretKey")
                     })
@@ -68,7 +68,7 @@
         }
 </script>
 
-# v0.0.9
+# v0.0.10
 
 ## Test File
 
