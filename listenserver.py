@@ -35,33 +35,33 @@ app.add_middleware(
 # 2. Removes all non-alphanumeric characters
 # 3. Gets the first two words
 # 4. Joins them with a hyphen
-def clean_string(text):
-    # Convert to lowercase
-    text = text.lower()
-    # Keep only alphanumeric chars, spaces and dashes
-    text = re.sub(r'[^a-z0-9-\s]', '', text)
-    # Split into words and take first two
-    words = text.split()[:2]
+# def clean_string(text):
+#     # Convert to lowercase
+#     text = text.lower()
+#     # Keep only alphanumeric chars, spaces and dashes
+#     text = re.sub(r'[^a-z0-9-\s]', '', text)
+#     # Split into words and take first two
+#     words = text.split()[:2]
 
-    # words should always be 2 long
-    # otherwise something went wrong
-    if len(words) != 2:
-        logger.error("words was not 2 long. Investigate.")
-        return ""
+#     # words should always be 2 long
+#     # otherwise something went wrong
+#     if len(words) != 2:
+#         logger.error("words was not 2 long. Investigate.")
+#         return ""
 
-    # Special rule
-    # If either word starts of ends with hyphen
-    # just smush them together
-    # otherwise add a hyphen
-    # Why? Without this special case:
-    # ["ls", "-al"] becomes "ls--al" which isn't correct
-    # it should be "ls-al"
+#     # Special rule
+#     # If either word starts of ends with hyphen
+#     # just smush them together
+#     # otherwise add a hyphen
+#     # Why? Without this special case:
+#     # ["ls", "-al"] becomes "ls--al" which isn't correct
+#     # it should be "ls-al"
 
-    if words[0].startswith("-") or words[0].endswith("-") or words[1].startswith("-") or words[1].endswith("-"):
-       return ''.join(words)
-    else:
-        # Join with hyphen
-        return '-'.join(words)
+#     if words[0].startswith("-") or words[0].endswith("-") or words[1].startswith("-") or words[1].endswith("-"):
+#        return ''.join(words)
+#     else:
+#         # Join with hyphen
+#         return '-'.join(words)
 
 @app.post("/query")
 def execute_query(body: RequestBody):
@@ -121,9 +121,8 @@ def execute_query(body: RequestBody):
     snippet_name_to_execute = ""
 
     for snippet in valid_snippets:
-        logger.info(f">>> {clean_string(body.snippet_id)} vs. {snippet['name']} and {clean_string(snippet['first_command'])} ")
 
-        if clean_string(body.snippet_id) == snippet["name"] or body.snippet_id == clean_string(snippet["first_command"]):
+        if body.snippet_id == snippet["name"]:
             snippet_name_to_execute = snippet["name"]
             break
     

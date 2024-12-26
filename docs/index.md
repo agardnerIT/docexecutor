@@ -39,9 +39,9 @@
             localStorage.setItem("secretKey", document.getElementById("secretKey").value)
         }
 
-        async function sendRequest() {
+        async function sendRequest(snippetID) {
             try {
-                const preContent = document.getElementById('codesnippet').textContent;
+                const preContent = document.getElementById(snippetID).textContent;
                 const firstLine = preContent.trim().split('\n')[0];
 
                 const response = await fetch(localStorage.getItem("serverAddress") + "query", {
@@ -83,5 +83,5 @@ ls -al
 touch /tmp/foo
 ```
 
-<button onclick="sendRequest()">&#9658;</button>
+<button onclick="sendRequest('list all')">&#9658;</button>
 <div id="response">Response will appear here...</div>
