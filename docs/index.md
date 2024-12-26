@@ -21,18 +21,11 @@
         }
         #response {
             visibility: hidden;
-            min-width: 250px;
-            margin-left: -125px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 2px;
-            padding: 16px;
+            background-color: rgba(34,139,34,0.7);
             position: fixed;
-            z-index: 1;
-            left: 50%;
-            bottom: 200px;
-            font-size: 17px;
+            bottom: 5px;
+            color: #fff;
+            padding: 16px;
         }
 
         #response.show {
@@ -43,21 +36,21 @@
 
         @-webkit-keyframes fadein {
             from {bottom: 0; opacity: 0;} 
-            to {bottom: 200px; opacity: 1;}
+            to {bottom: 30px; opacity: 1;}
         }
 
         @keyframes fadein {
             from {bottom: 0; opacity: 0;}
-            to {bottom: 200px; opacity: 1;}
+            to {bottom: 30px; opacity: 1;}
         }
 
         @-webkit-keyframes fadeout {
-            from {bottom: 200px; opacity: 1;} 
+            from {bottom: 30px; opacity: 1;} 
             to {bottom: 0; opacity: 0;}
         }
 
         @keyframes fadeout {
-            from {bottom: 200px; opacity: 1;}
+            from {bottom: 30px; opacity: 1;}
             to {bottom: 0; opacity: 0;}
         }
 </style>
@@ -90,7 +83,7 @@
                     document.getElementById('response').innerHTML = data["output"]
                     var x = document.getElementById("response");
                     x.className = "show";
-                    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 6000);
+                    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
                 }
                 // else {
                 //     // secretKey is probably wrong so set empty
@@ -103,7 +96,7 @@
         }
 </script>
 
-# v0.0.14
+# v0.0.18
 
 ## Test File
 
@@ -116,4 +109,4 @@ touch /tmp/foo
 ```
 
 <button class="executor" onclick="sendRequest('list all', 'docs/index.md')">&#9658;</button>
-<div id="response">Response will appear here...</div>
+<pre id="response">Response will appear here...</pre>
