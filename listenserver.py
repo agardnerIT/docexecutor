@@ -70,7 +70,7 @@ def execute_query(body: RequestBody):
     # exit immediately
 
     if body.secret_key != SECRET_KEY:
-        log.error("invalid secret key")
+        logger.error("invalid secret key")
         return {}
     
     snippet_id_to_execute = ""
