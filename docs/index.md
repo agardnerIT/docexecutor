@@ -88,11 +88,14 @@
 
                 if (data["output"]) {
                     document.getElementById('response').innerHTML = data["output"]
+                    var x = document.getElementById("response");
+                    x.className = "show";
+                    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 6000);
                 }
-                else {
-                    // secretKey is probably wrong so set empty
-                    document.getElementById('response').innerHTML = ""
-                }
+                // else {
+                //     // secretKey is probably wrong so set empty
+                //     document.getElementById('response').innerHTML = ""
+                // }
 
             } catch (error) {
                 document.getElementById('response').innerText = 'Error: ' + error.message;
@@ -100,7 +103,7 @@
         }
 </script>
 
-# v0.0.12
+# v0.0.14
 
 ## Test File
 
