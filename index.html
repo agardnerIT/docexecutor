@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#v008" class="md-skip">
+        <a href="#v009" class="md-skip">
           Skip to content
         </a>
       
@@ -415,8 +415,6 @@
 
         async function sendRequest(snippetID) {
             try {
-                const preContent = document.getElementById(snippetID).textContent;
-                const firstLine = preContent.trim().split('\n')[0];
 
                 const response = await fetch(localStorage.getItem("serverAddress") + "query", {
                     method: 'POST',
@@ -425,7 +423,7 @@
                     },
                     body: JSON.stringify({
                         filename: "index.md",
-                        snippet_id: firstLine,
+                        snippet_id: snippetID,
                         secret_key: localStorage.getItem("secretKey")
                     })
                 });
@@ -445,7 +443,7 @@
         }
 </script>
 
-<h1 id="v008">v0.0.8<a class="headerlink" href="#v008" title="Permanent link">#</a></h1>
+<h1 id="v009">v0.0.9<a class="headerlink" href="#v009" title="Permanent link">#</a></h1>
 <h2 id="test-file">Test File<a class="headerlink" href="#test-file" title="Permanent link">#</a></h2>
 <p><label for="secretKey">Set secret key: </label> <input type="text" onblur="setSecretKey()" id="secretKey" /><br />
 <label for="serverAddress">Set server address: </label> <input type="text" onblur="setServerAddress()" id="serverAddress" /><br /><br /></p>
