@@ -1,0 +1,22 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/kubernetes-helm
+{
+	"name": "test",
+
+	"hostRequirements": {
+		"cpus": 2
+	},
+    "forwardPorts": [8000],
+    "portsAttributes": {
+        "8000": {
+            "label": "listenserver.py",
+            "onAutoForward": "silent"
+        }
+    },
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": ".devcontainer/post-create.sh",
+
+	// Use 'postStartCommand' to run commands after the container starts.
+    "postStartCommand": ".devcontainer/post-start.sh"
+}
