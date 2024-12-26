@@ -41,8 +41,6 @@
 
         async function sendRequest(snippetID) {
             try {
-                const preContent = document.getElementById(snippetID).textContent;
-                const firstLine = preContent.trim().split('\n')[0];
 
                 const response = await fetch(localStorage.getItem("serverAddress") + "query", {
                     method: 'POST',
@@ -51,7 +49,7 @@
                     },
                     body: JSON.stringify({
                         filename: "index.md",
-                        snippet_id: firstLine,
+                        snippet_id: snippetID,
                         secret_key: localStorage.getItem("secretKey")
                     })
                 });
@@ -71,7 +69,7 @@
         }
 </script>
 
-# v0.0.8
+# v0.0.9
 
 ## Test File
 
