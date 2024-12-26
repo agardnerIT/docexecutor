@@ -16,7 +16,7 @@ if SECRET_KEY == "":
     logger.error("SECRET_KEY is empty. Investigate. Exiting.")
     exit()
 #
-# {"filename": "install.md", "command": "kind delete cluster"}
+# {"filename": "install.md", "command": "kind delete cluster", "secret_key": "xxxxx"}
 #
 class RequestBody(BaseModel):
     filename: str
@@ -33,6 +33,16 @@ app.add_middleware(
     allow_methods=["*"],  # Allows all methods
     allow_headers=["*"],  # Allows all headers
 )
+
+# When a user retrieves the
+# secret key from /tmp/secret
+# The shell has an annoying habit of putting `%` at the end
+# So rather than asking hte user to chop it off
+# We just chop it off for them (if it is present)
+def sanitise_secret_key(secret_key):
+    if secret_key.endswith("%"):
+        secret_key = secret_key[:-1]
+    return secret_key
 
 # Takes any string and:
 # 1. Converts to lowercase
@@ -73,7 +83,9 @@ def execute_query(body: RequestBody):
     # If incoming secret doesn't match system secret
     # exit immediately
 
-    if body.secret_key != SECRET_KEY:
+    secret_key_input = sanitise_secret_key(body.secret_key)
+
+    if secret_key_input != SECRET_KEY:
         logger.error("invalid secret key")
         return {}
     

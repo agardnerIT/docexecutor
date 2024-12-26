@@ -35,7 +35,14 @@
             localStorage.setItem("serverAddress", document.getElementById("serverAddress").value)
         }
         async function setSecretKey() {
-            localStorage.setItem("secretKey", document.getElementById("secretKey").value)
+            let secret_key = document.getElementById("secretKey").value
+
+            // Ensure secret_key endswith trailing slash
+            if (!secret_key.endsWith("/")) {
+                secret_key += "/"
+            }
+
+            localStorage.setItem("secretKey", secret_key)
         }
 
         async function sendRequest(snippetID) {
