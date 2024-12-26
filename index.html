@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#v007" class="md-skip">
+        <a href="#v008" class="md-skip">
           Skip to content
         </a>
       
@@ -413,9 +413,9 @@
             localStorage.setItem("secretKey", document.getElementById("secretKey").value)
         }
 
-        async function sendRequest() {
+        async function sendRequest(snippetID) {
             try {
-                const preContent = document.getElementById('codesnippet').textContent;
+                const preContent = document.getElementById(snippetID).textContent;
                 const firstLine = preContent.trim().split('\n')[0];
 
                 const response = await fetch(localStorage.getItem("serverAddress") + "query", {
@@ -445,14 +445,14 @@
         }
 </script>
 
-<h1 id="v007">v0.0.7<a class="headerlink" href="#v007" title="Permanent link">#</a></h1>
+<h1 id="v008">v0.0.8<a class="headerlink" href="#v008" title="Permanent link">#</a></h1>
 <h2 id="test-file">Test File<a class="headerlink" href="#test-file" title="Permanent link">#</a></h2>
 <p><label for="secretKey">Set secret key: </label> <input type="text" onblur="setSecretKey()" id="secretKey" /><br />
 <label for="serverAddress">Set server address: </label> <input type="text" onblur="setServerAddress()" id="serverAddress" /><br /><br /></p>
 <div class="highlight"><pre><span></span><code>ls -al
 touch /tmp/foo
 </code></pre></div>
-<p><button onclick="sendRequest()">&#9658;</button></p>
+<p><button onclick="sendRequest('list all')">&#9658;</button></p>
 <div id="response">Response will appear here...</div>
 
 
