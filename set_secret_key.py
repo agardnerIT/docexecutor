@@ -16,7 +16,7 @@ current_user = os.environ.get("USER","")
 if current_user == "":
     exit
 
-value =f"SECRET_KEY={secrets.token_urlsafe(8)}\n"
+value = f"echo SECRET_KEY={secrets.token_urlsafe(8)}\n"
 
-with open(file=f"/home/{current_user}/.zshrc", mode="a") as secret_file:
+with open(file=f"/home/{current_user}/.bashrc", mode="a") as secret_file:
     secret_file.write(value)
