@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#v0013" class="md-skip">
+        <a href="#v0014" class="md-skip">
           Skip to content
         </a>
       
@@ -462,11 +462,14 @@
 
                 if (data["output"]) {
                     document.getElementById('response').innerHTML = data["output"]
+                    var x = document.getElementById("response");
+                    x.className = "show";
+                    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 6000);
                 }
-                else {
-                    // secretKey is probably wrong so set empty
-                    document.getElementById('response').innerHTML = ""
-                }
+                // else {
+                //     // secretKey is probably wrong so set empty
+                //     document.getElementById('response').innerHTML = ""
+                // }
 
             } catch (error) {
                 document.getElementById('response').innerText = 'Error: ' + error.message;
@@ -474,7 +477,7 @@
         }
 </script>
 
-<h1 id="v0013">v0.0.13<a class="headerlink" href="#v0013" title="Permanent link">#</a></h1>
+<h1 id="v0014">v0.0.14<a class="headerlink" href="#v0014" title="Permanent link">#</a></h1>
 <h2 id="test-file">Test File<a class="headerlink" href="#test-file" title="Permanent link">#</a></h2>
 <p><label for="secretKey">Set secret key: </label> <input type="text" onblur="setSecretKey()" id="secretKey" /><br />
 <label for="serverAddress">Set server address: </label> <input type="text" onblur="setServerAddress()" id="serverAddress" /><br /><br /></p>
