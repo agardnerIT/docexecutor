@@ -15,18 +15,50 @@
         .executor:hover {
             background-color: #45a049;
         }
-        #response {
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            min-height: 50px;
-            font-family: monospace;
-            white-space: pre-wrap;
-        }
         #codesnippet {
             width: 30%;
             float: left;
+        }
+        #response {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 200px;
+            font-size: 17px;
+        }
+
+        #response.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 5s;
+            animation: fadein 0.5s, fadeout 0.5s 5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {bottom: 0; opacity: 0;} 
+            to {bottom: 200px; opacity: 1;}
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 200px; opacity: 1;}
+        }
+
+        @-webkit-keyframes fadeout {
+            from {bottom: 200px; opacity: 1;} 
+            to {bottom: 0; opacity: 0;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 200px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
         }
 </style>
 
