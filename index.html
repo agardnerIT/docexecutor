@@ -392,12 +392,31 @@
         #response {
             margin-top: 20px;
             padding: 10px;
+            width: 100px;
             border: 1px solid #ddd;
             border-radius: 4px;
             min-height: 50px;
             font-family: monospace;
             white-space: pre-wrap;
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+            height: 80vuh;
+            box-sizing: border-box;
         }
+
+        .results-panel {
+            width: 300px;
+            background-color: white;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-y: auto;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            box-sizing: border-box;
+        }
+
         #codesnippet {
             width: 30%;
             float: left;
@@ -408,20 +427,27 @@
         async function setServerAddress() {
             localStorage.setItem("serverAddress", document.getElementById("serverAddress").value)
         }
+
         async function setSecretKey() {
             localStorage.setItem("secretKey", document.getElementById("secretKey").value)
         }
 
-        async function sendRequest(snippetID) {
+        async function sendRequest(snippetID, filePath) {
             try {
+                let serverAddress = localStorage.getItem("serverAddress");
 
-                const response = await fetch(localStorage.getItem("serverAddress") + "query", {
+                // Ensure serverAddress has trailing slash
+                if (!serverAddress.endsWith("/")) {
+                    serverAddress += "/"
+                }
+
+                const response = await fetch(serverAddress + "query", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        filename: "docs/index.md",
+                        filename: filePath,
                         snippet_id: snippetID,
                         secret_key: localStorage.getItem("secretKey")
                     })
@@ -449,7 +475,7 @@
 <div class="highlight"><pre><span></span><code>ls -al
 touch /tmp/foo
 </code></pre></div>
-<p><button class="executor" onclick="sendRequest('list all')">&#9658;</button></p>
+<p><button class="executor" onclick="sendRequest('list all', 'docs/index.md')">&#9658;</button></p>
 <div id="response">Response will appear here...</div>
 
 
