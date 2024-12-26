@@ -71,6 +71,8 @@
         }
 </script>
 
+# v0.0.3
+
 ## Test File
 
 <label for="secretKey">Set secret key: </label> <input type="text" onblur="setSecretKey()" id="secretKey" /><br />
