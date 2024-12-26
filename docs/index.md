@@ -31,10 +31,54 @@
         }
 </style>
 
+<script>
+        async function setSecretKey() {
+            localStorage.setItem("serverAddress", document.getElementById("serverAddress").value)
+        }
+        async function setSecretKey() {
+            localStorage.setItem("secretKey", document.getElementById("secretKey").value)
+        }
+
+        async function sendRequest() {
+            try {
+                const preContent = document.getElementById('codesnippet').textContent;
+                const firstLine = preContent.trim().split('\n')[0];
+
+                const response = await fetch(localStorage.getItem("serverAddress") + "/query", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        filename: "index.md",
+                        snippet_id: firstLine,
+                        secret_key: localStorage.getItem("secretKey")
+                    })
+                });
+                const data = await response.json();
+
+                if (data["output"]) {
+                    document.getElementById('response').innerHTML = data["output"]
+                }
+                else {
+                    // secretKey is probably wrong so set empty
+                    document.getElementById('response').innerHTML = ""
+                }
+
+            } catch (error) {
+                document.getElementById('response').innerText = 'Error: ' + error.message;
+            }
+        }
+</script>
+
 ## Test File
+
+<label for="secretKey">Set secret key: </label> <input type="text" onblur="setSecretKey()" id="secretKey" /><br />
+<label for="serverAddress">Set server address: </label> <input type="text" onblur="setServerAddress()" id="secretKey" /><br /><br />
 
 ```
 ls -al
 touch /tmp/foo
 ```
+
 <button onclick="sendRequest()">&#9658;</button>
