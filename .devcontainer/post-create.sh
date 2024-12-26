@@ -1,8 +1,11 @@
 #!/bin/bash
 
-export FOO=bar
-pip install -r requirements.txt
-fastapi run listenserver.py
+pip install -r $CODESPACE_VSCODE_FOLDER/requirements.txt
 
-python set_secret_key.py
-zsh ~/.zshrc
+# Set secret key to /tmp/secret
+python $CODESPACE_VSCODE_FOLDER/set_secret_key.py
+
+nohup fastapi run $CODESPACE_VSCODE_FOLDER/listenserver.py &
+
+# open listenserver port 8000 publicly
+gh codespace ports visibility 8000:public -c $CODESPACE_NAME

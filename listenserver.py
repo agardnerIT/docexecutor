@@ -5,12 +5,15 @@ from loguru import logger
 import subprocess
 import json
 import re
+import os
 
-SECRET_KEY = ""
 with open("/tmp/secret", mode="r") as secret_file:
     SECRET_KEY = secret_file.readline()
     SECRET_KEY = SECRET_KEY.strip()
 
+if SECRET_KEY == "":
+    logger.error("SECRET_KEY is empty. Investigate. Exiting.")
+    exit()
 #
 # {"filename": "install.md", "command": "kind delete cluster"}
 #
