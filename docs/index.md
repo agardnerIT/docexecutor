@@ -32,7 +32,7 @@
 </style>
 
 <script>
-        async function setSecretKey() {
+        async function setServerAddress() {
             localStorage.setItem("serverAddress", document.getElementById("serverAddress").value)
         }
         async function setSecretKey() {
@@ -44,7 +44,7 @@
                 const preContent = document.getElementById('codesnippet').textContent;
                 const firstLine = preContent.trim().split('\n')[0];
 
-                const response = await fetch(localStorage.getItem("serverAddress") + "/query", {
+                const response = await fetch(localStorage.getItem("serverAddress") + "query", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
