@@ -23,7 +23,6 @@
             min-height: 50px;
             font-family: monospace;
             white-space: pre-wrap;
-            background-color: #f5f5f5;
         }
         #codesnippet {
             width: 30%;
@@ -41,8 +40,6 @@
 
         async function sendRequest(snippetID) {
             try {
-                const preContent = document.getElementById(snippetID).textContent;
-                const firstLine = preContent.trim().split('\n')[0];
 
                 const response = await fetch(localStorage.getItem("serverAddress") + "query", {
                     method: 'POST',
@@ -50,8 +47,8 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        filename: "index.md",
-                        snippet_id: firstLine,
+                        filename: "docs/index.md",
+                        snippet_id: snippetID,
                         secret_key: localStorage.getItem("secretKey")
                     })
                 });
@@ -71,7 +68,7 @@
         }
 </script>
 
-# v0.0.7
+# v0.0.10
 
 ## Test File
 
