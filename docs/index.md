@@ -1,5 +1,5 @@
 <style>
-        button {
+        .executor {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
@@ -12,7 +12,7 @@
             padding: 10px;
             font-size: 16px;
         }
-        button:hover {
+        .executor:hover {
             background-color: #45a049;
         }
         #response {
@@ -68,7 +68,7 @@
         }
 </script>
 
-# v0.0.10
+# v0.0.11
 
 ## Test File
 
@@ -80,5 +80,5 @@ ls -al
 touch /tmp/foo
 ```
 
-<button onclick="sendRequest('list all')">&#9658;</button>
+<button class="executor" onclick="sendRequest('list all')">&#9658;</button>
 <div id="response">Response will appear here...</div>
