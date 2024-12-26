@@ -74,7 +74,7 @@
 ## Test File
 
 <label for="secretKey">Set secret key: </label> <input type="text" onblur="setSecretKey()" id="secretKey" /><br />
-<label for="serverAddress">Set server address: </label> <input type="text" onblur="setServerAddress()" id="secretKey" /><br /><br />
+<label for="serverAddress">Set server address: </label> <input type="text" onblur="setServerAddress()" id="serverAddress" /><br /><br />
 
 ```
 ls -al
