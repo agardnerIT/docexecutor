@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#v0010" class="md-skip">
+        <a href="#v0011" class="md-skip">
           Skip to content
         </a>
       
@@ -373,7 +373,7 @@
 
 
 <style>
-        button {
+        .executor {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
@@ -386,7 +386,7 @@
             padding: 10px;
             font-size: 16px;
         }
-        button:hover {
+        .executor:hover {
             background-color: #45a049;
         }
         #response {
@@ -442,14 +442,14 @@
         }
 </script>
 
-<h1 id="v0010">v0.0.10<a class="headerlink" href="#v0010" title="Permanent link">#</a></h1>
+<h1 id="v0011">v0.0.11<a class="headerlink" href="#v0011" title="Permanent link">#</a></h1>
 <h2 id="test-file">Test File<a class="headerlink" href="#test-file" title="Permanent link">#</a></h2>
 <p><label for="secretKey">Set secret key: </label> <input type="text" onblur="setSecretKey()" id="secretKey" /><br />
 <label for="serverAddress">Set server address: </label> <input type="text" onblur="setServerAddress()" id="serverAddress" /><br /><br /></p>
 <div class="highlight"><pre><span></span><code>ls -al
 touch /tmp/foo
 </code></pre></div>
-<p><button onclick="sendRequest('list all')">&#9658;</button></p>
+<p><button class="executor" onclick="sendRequest('list all')">&#9658;</button></p>
 <div id="response">Response will appear here...</div>
 
 
