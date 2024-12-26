@@ -1,7 +1,7 @@
 #!/bin/bash
 
 RUNME_CLI_VERSION=3.10.2
-pip install -r $CODESPACE_VSCODE_FOLDER/requirements.txt
+pip install -r /workspaces/docexecutor/requirements.txt
 
 mkdir runme
 cd runme
