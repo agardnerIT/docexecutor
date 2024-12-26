@@ -18,5 +18,5 @@ if current_user == "":
 
 value = f"echo SECRET_KEY={secrets.token_urlsafe(8)}\n"
 
-with open(file=f"/home/{current_user}/.bashrc", mode="a") as secret_file:
+with open(file=f"/home/{current_user}/.zshrc", mode="a") as secret_file:
     secret_file.write(value)
