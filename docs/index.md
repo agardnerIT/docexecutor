@@ -82,3 +82,4 @@ touch /tmp/foo
 ```
 
 <button onclick="sendRequest()">&#9658;</button>
+<div id="response">Response will appear here...</div>
