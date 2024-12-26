@@ -1,1 +1,1 @@
-{"config":{"lang":["en"],"separator":"[\\s\\-]+","pipeline":["stopWordFilter"]},"docs":[{"location":"","title":"1. About","text":""},{"location":"#test-file","title":"Test File","text":"<p><pre><code>ls -al\ntouch /tmp/foo\n</code></pre> \u25ba</p>"}]}
+{"config":{"lang":["en"],"separator":"[\\s\\-]+","pipeline":["stopWordFilter"]},"docs":[{"location":"","title":"1. About","text":""},{"location":"#test-file","title":"Test File","text":"<p>Set secret key:  Set server address:  </p> <pre><code>ls -al\ntouch /tmp/foo\n</code></pre> <p>\u25ba</p>"}]}
