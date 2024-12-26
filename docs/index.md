@@ -35,17 +35,10 @@
             localStorage.setItem("serverAddress", document.getElementById("serverAddress").value)
         }
         async function setSecretKey() {
-            let secret_key = document.getElementById("secretKey").value
-
-            // Ensure secret_key endswith trailing slash
-            if (!secret_key.endsWith("/")) {
-                secret_key += "/"
-            }
-
-            localStorage.setItem("secretKey", secret_key)
+            localStorage.setItem("secretKey", document.getElementById("secretKey").value)
         }
 
-        async function sendRequest(snippetID) {
+        async function sendRequest(snippetID, filePath) {
             try {
 
                 const response = await fetch(localStorage.getItem("serverAddress") + "query", {
@@ -54,7 +47,7 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        filename: "docs/index.md",
+                        filename: filePath,
                         snippet_id: snippetID,
                         secret_key: localStorage.getItem("secretKey")
                     })
@@ -87,5 +80,5 @@ ls -al
 touch /tmp/foo
 ```
 
-<button class="executor" onclick="sendRequest('list all')">&#9658;</button>
+<button class="executor" onclick="sendRequest('list all', 'docs/index.md')">&#9658;</button>
 <div id="response">Response will appear here...</div>
