@@ -71,14 +71,14 @@
         }
 </script>
 
-# v0.0.6
+# v0.0.7
 
 ## Test File
 
 <label for="secretKey">Set secret key: </label> <input type="text" onblur="setSecretKey()" id="secretKey" /><br />
 <label for="serverAddress">Set server address: </label> <input type="text" onblur="setServerAddress()" id="serverAddress" /><br /><br />
 
-``` title="1234"
+``` {"name": "list all"}
 ls -al
 touch /tmp/foo
 ```
