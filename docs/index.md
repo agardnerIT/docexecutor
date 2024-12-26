@@ -23,7 +23,6 @@
             min-height: 50px;
             font-family: monospace;
             white-space: pre-wrap;
-            background-color: #f5f5f5;
         }
         #codesnippet {
             width: 30%;
