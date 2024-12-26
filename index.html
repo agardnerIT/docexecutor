@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#v0011" class="md-skip">
+        <a href="#v0012" class="md-skip">
           Skip to content
         </a>
       
@@ -392,31 +392,12 @@
         #response {
             margin-top: 20px;
             padding: 10px;
-            width: 100px;
             border: 1px solid #ddd;
             border-radius: 4px;
             min-height: 50px;
             font-family: monospace;
             white-space: pre-wrap;
-            overflow-y: auto;
-            position: sticky;
-            top: 0;
-            height: 80vuh;
-            box-sizing: border-box;
         }
-
-        .results-panel {
-            width: 300px;
-            background-color: white;
-            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            overflow-y: auto;
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            box-sizing: border-box;
-        }
-
         #codesnippet {
             width: 30%;
             float: left;
@@ -427,21 +408,14 @@
         async function setServerAddress() {
             localStorage.setItem("serverAddress", document.getElementById("serverAddress").value)
         }
-
         async function setSecretKey() {
             localStorage.setItem("secretKey", document.getElementById("secretKey").value)
         }
 
         async function sendRequest(snippetID, filePath) {
             try {
-                let serverAddress = localStorage.getItem("serverAddress");
 
-                // Ensure serverAddress has trailing slash
-                if (!serverAddress.endsWith("/")) {
-                    serverAddress += "/"
-                }
-
-                const response = await fetch(serverAddress + "query", {
+                const response = await fetch(localStorage.getItem("serverAddress") + "query", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -468,7 +442,7 @@
         }
 </script>
 
-<h1 id="v0011">v0.0.11<a class="headerlink" href="#v0011" title="Permanent link">#</a></h1>
+<h1 id="v0012">v0.0.12<a class="headerlink" href="#v0012" title="Permanent link">#</a></h1>
 <h2 id="test-file">Test File<a class="headerlink" href="#test-file" title="Permanent link">#</a></h2>
 <p><label for="secretKey">Set secret key: </label> <input type="text" onblur="setSecretKey()" id="secretKey" /><br />
 <label for="serverAddress">Set server address: </label> <input type="text" onblur="setServerAddress()" id="serverAddress" /><br /><br /></p>
