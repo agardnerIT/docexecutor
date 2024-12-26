@@ -6,6 +6,7 @@ import subprocess
 import json
 import re
 import os
+from ansi2html import Ansi2HTMLConverter
 
 with open("/tmp/secret", mode="r") as secret_file:
     SECRET_KEY = secret_file.readline()
@@ -139,7 +140,7 @@ def execute_query(body: RequestBody):
     
     return_obj = {
         "return_code": output.returncode,
-        "output": output.stdout
+        "output": format_text(output.stdout)
     }
 
     if output.returncode != 0:
@@ -154,6 +155,8 @@ def execute_query(body: RequestBody):
 def format_text(input):
     output = input
     output = output.replace('\t', '&nbsp;' * 8)
-    output = output.replace('\n', '<br />')
+    
+    conv = Ansi2HTMLConverter()
+    output = conv.convert(output, full=False)
 
     return output
