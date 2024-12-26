@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#v0015" class="md-skip">
+        <a href="#v0016" class="md-skip">
           Skip to content
         </a>
       
@@ -395,18 +395,11 @@
         }
         #response {
             visibility: hidden;
-            min-width: 250px;
-            margin-left: -125px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 2px;
-            padding: 16px;
+            background-color: rgba(34,139,34,0.7);
             position: fixed;
-            z-index: 1;
-            left: 50%;
-            bottom: 30px;
-            font-size: 17px;
+            bottom: 5px;
+            color: #fff;
+            padding: 16px;
         }
 
         #response.show {
@@ -477,7 +470,7 @@
         }
 </script>
 
-<h1 id="v0015">v0.0.15<a class="headerlink" href="#v0015" title="Permanent link">#</a></h1>
+<h1 id="v0016">v0.0.16<a class="headerlink" href="#v0016" title="Permanent link">#</a></h1>
 <h2 id="test-file">Test File<a class="headerlink" href="#test-file" title="Permanent link">#</a></h2>
 <p><label for="secretKey">Set secret key: </label> <input type="text" onblur="setSecretKey()" id="secretKey" /><br />
 <label for="serverAddress">Set server address: </label> <input type="text" onblur="setServerAddress()" id="serverAddress" /><br /><br /></p>
@@ -485,7 +478,7 @@
 touch /tmp/foo
 </code></pre></div>
 <p><button class="executor" onclick="sendRequest('list all', 'docs/index.md')">&#9658;</button></p>
-<div id="response">Response will appear here...</div>
+<pre id="response">Response will appear here...</pre>
 
 
 
